@@ -14,3 +14,6 @@ Customizable fonts: Choose from multiple fonts to match the terminal aesthetic (
 
 This chatbox is fully customizable and can be integrated into Streamlabs to enhance the interactivity of your stream by displaying chat messages in a stylish, retro format.
 
+### Preview
+![Screenshot 2025-05-12 140229](https://github.com/user-attachments/assets/0a98b983-5556-45ac-a995-1c50c7c08a3c)
+https://github.com/user-attachments/assets/d67eccb8-0173-472c-b9ff-0b0222a0eb6c
