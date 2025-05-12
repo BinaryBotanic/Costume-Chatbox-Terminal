@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  color: #33FF33;
+  font-size: 16px;
+}
+
+#log {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 5px 10px;
+  width: 100%;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+#log::-webkit-scrollbar {
+  display: none;
+}
+
+#log > div {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  color: #33FF33;
+  line-height: 1.3;
+  animation: fadeInRight 0.3s ease forwards, fadeOut 0.5s ease {message_hide_delay} forwards;
+  box-shadow: none;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #66FF66;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.meta {
+  display: none; /* Hidden to clean up terminal look, unless you want it shown */
+}
+
+.message-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 22px;
+}
+
+.prompt {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.message {
+  color: inherit;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.badge {
+  display: none; /* Optional: hide badges to reduce space */
+}
+
+.emote img {
+  height: 1em;
+  vertical-align: middle;
+}
+
+@keyframes fadeInRight {
+  0% { opacity: 0; transform: translateX(10px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Typing effect */
+.typewriter {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid #33FF33;
+  animation: typing 2s steps(30, end), blinkCursor 0.7s step-end infinite;
+  max-width: 100%;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Blinking cursor */
+@keyframes blinkCursor {
+  from, to { border-color: transparent; }
+  50% { border-color: #33FF33; }
+}
+
+/* Optional: CRT Scanline Effect */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 255, 0, 0.02) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 10;
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+}
