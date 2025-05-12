@@ -1,0 +1,40 @@
+document.addEventListener('onLoad', function (obj) {
+  console.log('Chat overlay loaded');
+});
+
+document.addEventListener('onEventReceived', function (obj) {
+  const event = obj.detail.event;  // Get the event object from the incoming message
+  console.log('Event received:', event);
+
+  // Define the color palette for message text
+  const colors = ['#ac99ac', '#94ae89', '#a6c5da', '#ebd29c', '#ede3e4'];
+
+  // Randomly select a color for the message text
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+  // Get the template for a chat message
+  const template = document.getElementById('chatlist_item').innerHTML;
+
+  // Replace placeholders with actual data
+  const chatMessageHTML = template
+    .replace('{from}', event.from)                       // Username
+    .replace('{messageId}', event.messageId)             // Unique message ID
+    .replace('{message}', event.message)                 // Message text
+    .replace('{color}', event.color || '#3c2f2f')        // User's color or default dark brown
+    .replace('{messageColor}', randomColor);             // Random color for the message text
+
+  // Get the chat log container
+  const logContainer = document.getElementById('log');
+  
+  console.log('Appending message to chat:', chatMessageHTML); // Check if message is being added
+  
+  // Append the new message to the log
+  logContainer.innerHTML += chatMessageHTML;
+
+  // Check the scroll position and height
+  console.log('Log container height:', logContainer.scrollHeight);
+  console.log('Log container scrollTop:', logContainer.scrollTop);
+
+  // Scroll to the bottom to keep the latest message in view
+  logContainer.scrollTop = logContainer.scrollHeight;
+});
